@@ -4,8 +4,9 @@ Wappster is a [Docker](https://www.docker.com/)-based tool to easily deploy and 
 
 # Why Self-host?
 
-There are two reasons for self-hosting:
+There are three reasons for self-hosting:
 
+* Availability: Required functionality not being available as managed services.
 * Cost: Paying substantially more for consuming the software as a service than self-hosting it.
 * Privacy: Not entrusting the provider with sensible data.
 
