@@ -55,8 +55,8 @@ sudo docker-compose up -d
 
 This will launch two containers:
 * [Portainer](https://www.portainer.io/), the graphical user interface to deploy and manage your self-hosted wapps
-* [Traefik](https://traefik.io/), the reverse proxy that is the SSL-secured gateway to your wapps
+* [Traefik](https://traefik.io/), the reverse proxy that is the SSL-secured gateway to your wappster and wapps
 
-You can access Portainer via ``https://${PORTAINER_HOST}:${HTTPS_MGMT_PORT}`` (as defined in the environment variables given during step 3) in order to create the first user and connect it to your Docker environment. To deploy your wapps, select the navigation item “App Templates.” The catalogue of wapps is hosted in a [separate repository](https://github.com/MichaelSchmidle/wapps).
+You can access Portainer via ``https://${PORTAINER_HOST}:${HTTPS_MGMT_PORT}`` (as defined in the environment variables given during step 3) in order to create the first user and connect it to your Docker environment. To deploy your wapps, select the navigation item “App Templates.” The catalogue of wapps available in your wappster is listed in a [separate repository](https://github.com/MichaelSchmidle/wapps).
 
 Traefik also provides a dashboard that can be accessed via ``https://${TRAEFIK_HOST}:${HTTPS_MGMT_PORT}`` (again as defined in the environment variables given during step 3). The dashboard should be considered “for your information only” since all configuration of Traefik happens automatically behind the scenes during the deployment of wappster and any wapp.
