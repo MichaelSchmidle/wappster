@@ -46,6 +46,10 @@ nano .env
 
 Further explanation of each environment variable can be found inside the copied ``.env`` file itself.
 
+### :warning: Important Note
+
+Wappster’s management interfaces listen on a dedicated port (defined by the variable ``HTTPS_MGMT_PORT``). This gives you the option to limit access to wappster and sensible wapps via firewall. Please make sure to configure the firewall of your wappster host appropriately to limit their exposure to the public.
+
 ## Step 4: Launch
 
 Finally, after saving the ``.env`` file, spin up your instance of wappster with ``docker-compose``, i.e.:
