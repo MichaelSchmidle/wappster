@@ -1,3 +1,5 @@
+![wapps logo](https://cdn.jsdelivr.net/gh/MichaelSchmidle/wapps@kartoffel/logo.svg)
+
 # About Wappster
 
 Wappster is a [Docker](https://www.docker.com/)-based tool to easily deploy and manage [self-hosted wapps](https://github.com/MichaelSchmidle/wapps) (short for “web apps”). It’s based on open source software like [Portainer](https://www.portainer.io/) and [Traefik](https://traefik.io/).
