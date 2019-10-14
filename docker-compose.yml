@@ -4,7 +4,7 @@ networks:
     external: true
 services:
   portainer:
-    command: "--logo https://cdn.jsdelivr.net/gh/MichaelSchmidle/wapps/wapps-logo.svg --templates https://cdn.jsdelivr.net/gh/MichaelSchmidle/wapps/catalogue.json"
+    command: "--logo ${LOGO} --templates ${CATALOGUE}"
     image: "portainer/portainer"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
