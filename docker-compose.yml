@@ -7,6 +7,7 @@ services:
     command: "--logo https://cdn.jsdelivr.net/gh/MichaelSchmidle/wapps/wapps-logo.svg --templates https://cdn.jsdelivr.net/gh/MichaelSchmidle/wapps/catalogue.json"
     image: "portainer/portainer"
     labels:
+      - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.http.routers.portainer.entrypoints=http,https,https-mgmt"
       - "traefik.http.routers.portainer.middlewares=wapps-mgmt"
       - "traefik.http.routers.portainer.rule=Host(`${PORTAINER_HOST}`)"
@@ -32,6 +33,7 @@ services:
     env_file: ".env"
     image: "traefik"
     labels:
+      - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.http.middlewares.wapps-mgmt.redirectscheme.permanent=true"
       - "traefik.http.middlewares.wapps-mgmt.redirectscheme.port=${HTTPS_MGMT_PORT}"
       - "traefik.http.middlewares.wapps-mgmt.redirectscheme.scheme=https"
@@ -52,6 +54,16 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "traefik_acme:/wapps"
+  watchtower:
+    command: "--label-enable"
+    image: "containrrr/watchtower"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    networks:
+      - "wapps"
+    restart: "always"
+    volume:
+      - "/var/run/docker.sock:/var/run/docker.sock"
 volumes:
   portainer_data:
   traefik_acme:
