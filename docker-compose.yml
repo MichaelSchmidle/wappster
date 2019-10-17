@@ -69,6 +69,7 @@ services:
       - "traefik_acme:/wapps"
   watchtower:
     command: "--label-enable"
+    env_file: ".env"
     image: "containrrr/watchtower"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
