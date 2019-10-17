@@ -35,6 +35,8 @@ services:
     - "--entryPoints.https.address=:443"
     - "--entryPoints.https-mgmt.address=:${HTTPS_MGMT_PORT}"
     - "--providers.docker"
+    - "--providers.file.directory=/wappster/traefik"
+    - "--providers.file.watch=true"
     env_file: ".env"
     image: "traefik"
     labels:
@@ -75,6 +77,7 @@ services:
     restart: "always"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "${TRAEFIK_CONF_DIR}:/wappster/traefik"
 volumes:
   portainer_data:
   traefik_acme:
