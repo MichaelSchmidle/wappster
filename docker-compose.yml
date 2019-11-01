@@ -37,6 +37,7 @@ services:
     - "--providers.docker"
     - "--providers.file.directory=/wappster/traefik"
     - "--providers.file.watch=true"
+    - "--serversTransport.insecureSkipVerify=true"
     env_file: ".env"
     image: "traefik"
     labels:
