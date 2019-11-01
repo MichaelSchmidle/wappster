@@ -67,6 +67,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "traefik_acme:/wapps"
+      - "${TRAEFIK_CONF_DIR}:/wappster/traefik"
   watchtower:
     command: "--label-enable"
     env_file: ".env"
@@ -78,7 +79,6 @@ services:
     restart: "always"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "${TRAEFIK_CONF_DIR}:/wappster/traefik"
 volumes:
   portainer_data:
   traefik_acme:
