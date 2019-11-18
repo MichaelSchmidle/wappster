@@ -60,7 +60,7 @@ Finally, after saving the ``.env`` file, spin up your instance of wappster with 
 sudo docker-compose up -d
 ```
 
-This will launch two containers:
+This will launch the following containers:
 * [Portainer](https://www.portainer.io/), the graphical user interface to deploy and manage your self-hosted wapps
 * [Traefik](https://traefik.io/), the reverse proxy that is the SSL-secured gateway to your wappster and wapps
 * [Watchtower](https://containrrr.github.io/watchtower/), the solution for automating Docker container base image updates
