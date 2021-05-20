@@ -41,7 +41,7 @@ git clone https://github.com/MichaelSchmidle/wappster
 Copy the file ``default.env`` of the repository that you just downloaded/cloned to ``.env``. Then open the copied file in a text editor and define the required environment variables, i.e.:
 
 ```
-cd wapps
+cd wappster
 cp default.env .env
 nano .env
 ```
