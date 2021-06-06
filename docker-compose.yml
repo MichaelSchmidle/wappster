@@ -9,9 +9,9 @@ services:
     image: "authelia/authelia"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
-      - "traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://${AUTHELIA_HOST}/"
-      - "traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true"
-      - "traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User, Remote-Groups, Remote-Name, Remote-Email"
+      - "traefik.http.middlewares.sso.forwardauth.address=http://authelia:9091/api/verify?rd=https://${AUTHELIA_HOST}/"
+      - "traefik.http.middlewares.sso.forwardauth.trustForwardHeader=true"
+      - "traefik.http.middlewares.sso.forwardauth.authResponseHeaders=Remote-User, Remote-Groups, Remote-Name, Remote-Email"
       - "traefik.http.routers.authelia-http.entryPoints=http"
       - "traefik.http.routers.authelia-http.middlewares=wapps"
       - "traefik.http.routers.authelia-http.rule=Host(`${AUTHELIA_HOST}`)"
