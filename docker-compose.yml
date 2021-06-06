@@ -23,7 +23,7 @@ services:
   redis:
     image: redis:alpine
     volumes:
-      - redis:/data
+      - redis_data:/data
     networks:
       - wapps
     restart: unless-stopped
