@@ -22,7 +22,7 @@ services:
       - "wapps"
     restart: "always"
     volumes:
-      - "authelia_config:/config"
+      - "./authelia:/config"
   portainer:
     command: "--logo ${LOGO} --templates ${CATALOGUE}"
     image: "portainer/portainer-ce"
@@ -102,6 +102,5 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 volumes:
-  authelia_config:
   portainer_data:
   traefik_acme:
