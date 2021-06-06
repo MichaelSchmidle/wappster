@@ -85,7 +85,7 @@ services:
       - "traefik.http.routers.traefik-https.tls.certResolver=wapps"
       - "traefik.http.routers.traefik-https-mgmt.entrypoints=https-mgmt"
       - "traefik.http.routers.traefik-https-mgmt.rule=Host(`${TRAEFIK_HOST}`)"
-      - "traefik.http.routers.traefik-https-mgmt.middlewares=authelia"
+      - "traefik.http.routers.traefik-https-mgmt.middlewares=sso"
       - "traefik.http.routers.traefik-https-mgmt.tls.certResolver=wapps"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
     networks:
