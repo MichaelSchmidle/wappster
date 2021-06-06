@@ -15,9 +15,6 @@ services:
       - "traefik.http.routers.authelia-https.entryPoints=https"
       - "traefik.http.routers.authelia-https.rule=Host(`${AUTHELIA_HOST}`)"
       - "traefik.http.routers.authelia-https.tls.certResolver=wapps"
-      - "traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://${AUTHELIA_HOST}/"
-      - "traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true"
-      - "traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User, Remote-Groups, Remote-Name, Remote-Email"
     networks:
       - "wapps"
     restart: "always"
@@ -62,6 +59,9 @@ services:
     image: "traefik"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://${AUTHELIA_HOST}/"
+      - "traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true"
+      - "traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User, Remote-Groups, Remote-Name, Remote-Email"
       - "traefik.http.middlewares.wapps-mgmt.redirectregex.permanent=true"
       - "traefik.http.middlewares.wapps-mgmt.redirectregex.regex=^http(s?)://(.*)/(.*)"
       - "traefik.http.middlewares.wapps-mgmt.redirectregex.replacement=https://$${2}:${HTTPS_MGMT_PORT}/$${3}"
