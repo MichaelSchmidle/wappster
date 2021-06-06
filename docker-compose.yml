@@ -20,6 +20,15 @@ services:
     restart: "always"
     volumes:
       - "./authelia:/config"
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis:/data
+    networks:
+      - wapps
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
   portainer:
     command: "--logo ${LOGO} --templates ${CATALOGUE}"
     image: "portainer/portainer-ce"
@@ -102,5 +111,6 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 volumes:
+  redis_data:
   portainer_data:
   traefik_acme:
