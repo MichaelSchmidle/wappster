@@ -1,7 +1,7 @@
 # This is a example on how to proxy non-dockerized applications with the file provider.
 # The following shows the YAML configuration of the Proxmox Virtual Environment (PVE).
 # Users will be redirected to wappster's management port (default: 4443).
-# To use this configuration as a template, just copy the file and add the `.yaml` file extension to the copied file.
+# To use this configuration as a template, just copy the file and add the `.yml` file extension to the copied file.
 http:
   routers:
     pve-http:

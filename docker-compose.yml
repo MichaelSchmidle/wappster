@@ -3,6 +3,26 @@ networks:
   wapps:
     external: true
 services:
+  authelia:
+    environment:
+      - "TZ=${TZ}"
+    image: "authelia/authelia"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.http.routers.authelia-http.entryPoints=http"
+      - "traefik.http.routers.authelia-http.middlewares=wapps"
+      - "traefik.http.routers.authelia-http.rule=Host(`${AUTHELIA_HOST}`)"
+      - "traefik.http.routers.authelia-https.entryPoints=https"
+      - "traefik.http.routers.authelia-https.rule=Host(`${AUTHELIA_HOST}`)"
+      - "traefik.http.routers.authelia-https.tls.certResolver=wapps"
+      - "traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://${AUTHELIA_HOST}/"
+      - "traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true"
+      - "traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User, Remote-Groups, Remote-Name, Remote-Email"
+    networks:
+      - "wapps"
+    restart: "always"
+    volumes:
+      - "./authelia:/config"
   portainer:
     command: "--logo ${LOGO} --templates ${CATALOGUE}"
     image: "portainer/portainer-ce"
@@ -56,6 +76,7 @@ services:
       - "traefik.http.routers.traefik-https.tls.certResolver=wapps"
       - "traefik.http.routers.traefik-https-mgmt.entrypoints=https-mgmt"
       - "traefik.http.routers.traefik-https-mgmt.rule=Host(`${TRAEFIK_HOST}`)"
+      - "traefik.http.routers.traefik-https-mgmt.middlewares=authelia"
       - "traefik.http.routers.traefik-https-mgmt.tls.certResolver=wapps"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
     networks:
