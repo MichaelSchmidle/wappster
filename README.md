@@ -2,7 +2,7 @@
 
 # About Wappster
 
-Wappster is a [Docker](https://www.docker.com/)-based tool to easily deploy and manage [self-hosted wapps](https://github.com/MichaelSchmidle/wapps) (short for “web apps”). It’s based on open source software [Portainer](https://www.portainer.io/), [Traefik](https://traefik.io/), [Authelia](https://www.authelia.com/), and [Watchtower](https://containrrr.dev/watchtower/).
+Wappster is a [Docker](https://www.docker.com/)-based tool to easily deploy and manage [self-hosted wapps](https://github.com/MichaelSchmidle/wapps) (short for “web apps”). It’s based on open source software like [Portainer](https://www.portainer.io/) and [Traefik](https://traefik.io/).
 
 # Why Self-host?
 
@@ -63,8 +63,7 @@ sudo docker-compose up -d
 This will launch the following containers:
 * [Portainer](https://www.portainer.io/), the graphical user interface to deploy and manage your self-hosted wapps
 * [Traefik](https://traefik.io/), the reverse proxy that is the SSL-secured gateway to your wappster and wapps
-* [Authelia](https://www.authelia.com/), Single Sign On (SSO) for all wapps that don't come with their own multi-user authentication system
-* [Watchtower](https://containrrr.dev/watchtower/), the solution for automating Docker container base image updates
+* [Watchtower](https://containrrr.github.io/watchtower/), the solution for automating Docker container base image updates
 
 You can access Portainer via ``https://${PORTAINER_HOST}:${HTTPS_MGMT_PORT}`` (as defined in the environment variables given during step 3) in order to create the first user and connect it to your Docker environment. To deploy your wapps, select the navigation item “App Templates.” The catalogue of wapps available in your wappster is listed in a [separate repository](https://github.com/MichaelSchmidle/wapps).
 
